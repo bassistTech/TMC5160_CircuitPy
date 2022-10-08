@@ -24,6 +24,12 @@ CircuitPython for Teensy 4.0:
 
 https://circuitpython.org/board/teensy40/
 
+## Preliminaries
+
+Familiarize yourself with CircuitPython before trying to use this project. There are lots of great tutorials. I'm going to assume that you know how to do things like copy files and enter commands into the REPL.
+
+Satisfy yourself that your CP installation is working by itself before installing any of my stuff.
+
 ## Hardware
 
 The schematic shows the basic wiring. The Teensy needs to be connected to a PC in order to receive power. The power supply labeled **+12 V** could be a range of voltages as indicated in the TMC5160_BOB datasheet. The current rating is determined by what motors and drive currents you're using. Make sure you use a power supply with built-in current limiting.
@@ -34,9 +40,31 @@ The schematic shows the basic wiring. The Teensy needs to be connected to a PC i
 
 ## Software
 
-**tmc5160.py** is the code package that abstracts the TMC5160 functions into a class. You should include it in your project file.
+I don't think there's a great way to clone this repo directly to the CircuitPython virtual drive. The reason is that the total collection of files will exceed the drive space. For this reason, I recommend cloning this repo and then copying individual project files to the CP drive. The **Python** directory will contain my project folders, of which there is presently only one.
 
-**code.py** is a very simple program that will run both motors when CircuitPython starts.
+### TestProject
+
+* **lib/tmc5160.py** is the code package that abstracts the TMC5160 functions into a class. It's the most general-purpose of the libraries.
+
+* **lib/motors.py** is a program that I wrote for easily controlling two motors from the REPL.
+
+**Installation**: Copy both of these files into the **lib** directory of the CP virtual drive.
+
+**Usage**: Connect the power supply to Vs on the board. As a reminder, this will typically be something like +12 V. Connect the USB cable to the Teensy. Since you've already been playing with CP, you know the COM port number of your project, and can open a terminal (such as PuTTY) to that COM port address. You'll see something like:
+
+	Auto-reload is on. Simply save files over USB to run them or enter REPL to disable.
+
+	Press any key to enter the REPL. Use CTRL-D to reload.
+
+	Adafruit CircuitPython 7.3.3 on 2022-08-29; Teensy 4.0 with IMXRT1062DVJ6A
+	
+Press any key to enter the REPL. Try entering the following commands:
+
+	from motors import x, y
+	x.moveAbsolute(10000)
+	y.moveAbsolute(-50000)
+
+That's it for the first demo.
 
 ## License
 

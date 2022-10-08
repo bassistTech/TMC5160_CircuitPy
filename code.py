@@ -18,6 +18,7 @@ while not spi.try_lock():
 
 # Tried 5
 spi.configure(baudrate=3000000, phase = 0, polarity = 0)
+
 x = tmc5160.TMC5160(spi, board.D10)
 y = tmc5160.TMC5160(spi, board.D9)
 x.setup(102400, 0.25, 250, 125)
