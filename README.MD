@@ -30,6 +30,8 @@ The schematic shows the basic wiring. The Teensy needs to be connected to a PC i
 
 ![Schematic diagram](./schem.png)
 
+![Build picture](./pic.png)
+
 ## Software
 
 **tmc5160.py** is the code package that abstracts the TMC5160 functions into a class. You should include it in your project file.
